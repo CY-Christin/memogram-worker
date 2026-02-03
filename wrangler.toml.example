@@ -1,0 +1,32 @@
+name = "memogram-worker"
+main = "src/index.ts"
+compatibility_date = "2026-02-03"
+
+[vars]
+# Public Memos base URL, e.g. "https://memos.example.com"
+MEMOS_BASE_URL = "https://memos.example.com"
+# Optional list page size override
+PAGE_SIZE = "8"
+# Set to "1" to send memo image attachments (external links) as Telegram photos
+SHOW_MEDIA = "1"
+# Optional: override webhook URL used by /telegram/setup
+# WEBHOOK_URL = "https://your-worker.example.com/telegram/webhook"
+
+[[kv_namespaces]]
+binding = "MEDIA_GROUPS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1
